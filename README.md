@@ -308,7 +308,7 @@ If you are using GigEVision camera, please ensure that the camera has a valid IP
 The stcamera_node provides generic functionality to control the OMRON SENTECH camera. If customization is needed to accommodate a specific camera, you can extend StCameraInterface class and either create a new ROS node or modify the existing stcamera_node (StCameraNode class) to support the specific camera. If you prefer the latter, you will need to modify the initialization process of the camera interface in StCameraNode class which can be found in function initializeCamera(). Please refer to the doxygen documentation for the structure of the StCameraInterface and the StCameraNode classes.
 
 ## 6. Questions/Feedbacks and Bug Reports
-If you have any questions/feedbacks or found any bugs, please contact support@sentech.co.jp.
+If you have any questions/feedbacks or found any bugs, please contact support-ros@sentech.co.jp.
 
 [GenICam GenApi documentation]:http://www.emva.org/wp-content/uploads/GenICam_Standard_v2_0.pdf
 [GenICam GenTL documentation]:http://www.emva.org/wp-content/uploads/GenICam_GenTL_1_5.pdf

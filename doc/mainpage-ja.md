@@ -300,7 +300,7 @@ stcamera_nodeは、OMRON SENTECHカメラを制御するために、一般的な
 StCameraInterfaceやStCameraNodeクラスの構造については、doxygenドキュメントを参照下さい。
 
 ## 6. 質問・フィードバックや不具合の報告
-質問・フィードバックやバグが見つかった場合は、support@sentech.co.jpにお問い合わせ下さい。
+質問・フィードバックやバグが見つかった場合は、support-ros@sentech.co.jpにお問い合わせ下さい。
 
 [GenICam GenApiドキュメント（英語）]:http://www.emva.org/wp-content/uploads/GenICam_Standard_v2_0.pdf
 [GenICam GenTLドキュメント（英語）]:http://www.emva.org/wp-content/uploads/GenICam_GenTL_1_5.pdf
