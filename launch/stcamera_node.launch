@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="respawn" default="false" />
+  <arg name="debug" default="false" />
+  <arg name="node_name" default="stcamera_node" />
+  <arg name="config_file" 
+    default="$(find omronsentech_camera)/launch/stcamera_node.yaml" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+  <arg if="$(arg debug)" name="launch_prefix" value="gdb -ex run --args" />
+  <node name="$(arg node_name)" pkg="omronsentech_camera" type="stcamera_node" 
+    output="screen" respawn="$(arg respawn)" 
+    launch-prefix="$(arg launch_prefix)">
+    <rosparam command="load" file="$(arg config_file)" />
+  </node>
+</launch>
+

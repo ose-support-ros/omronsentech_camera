@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<library path="lib/libstcamera_nodelet">
+  <class name="omronsentech_camera/StCameraNodelet" type="stcamera::StCameraNodelet" base_class_type="nodelet::Nodelet">
+    <description>
+      Nodelet for stcamera_node
+    </description>
+  </class>
+</library>

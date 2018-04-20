@@ -1,0 +1,8 @@
+<map id="stcamera_node.cpp" name="stcamera_node.cpp">
+<area shape="rect" id="node2" href="$stcamera__node_8h.html" title="Class implementation for stcamera_node. " alt="" coords="708,80,863,121"/>
+<area shape="rect" id="node36" href="$stheader_8h.html" title="Contains definitions and macros. " alt="" coords="5271,259,5425,300"/>
+<area shape="rect" id="node44" href="$stcamera__interface__u3v_8h.html" title="Class to control a connected USB3Vision camera. " alt="" coords="2436,80,2612,121"/>
+<area shape="rect" id="node45" href="$stcamera__interface__gev_8h.html" title="Class to control a connected GigEVision camera. " alt="" coords="2855,80,3031,121"/>
+<area shape="rect" id="node5" href="$stparameter_8h.html" title="Class to handle ROS parameter. " alt="" coords="397,259,552,300"/>
+<area shape="rect" id="node9" href="$stcamera__interface_8h.html" title="Base class to control a connected camera. " alt="" coords="2457,169,2612,211"/>
+</map>

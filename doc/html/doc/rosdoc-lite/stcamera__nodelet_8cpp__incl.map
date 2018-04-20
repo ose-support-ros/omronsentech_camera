@@ -1,0 +1,6 @@
+<map id="stcamera_nodelet.cpp" name="stcamera_nodelet.cpp">
+<area shape="rect" id="node2" href="$stcamera__nodelet_8h.html" title="Nodelet implementation of stcamera_node. " alt="" coords="2872,80,3027,121"/>
+<area shape="rect" id="node6" href="$stcamera__node_8h.html" title="Class implementation for stcamera_node. " alt="" coords="3112,169,3267,211"/>
+<area shape="rect" id="node9" href="$stparameter_8h.html" title="Class to handle ROS parameter. " alt="" coords="5698,355,5852,397"/>
+<area shape="rect" id="node13" href="$stcamera__interface_8h.html" title="Base class to control a connected camera. " alt="" coords="2704,259,2859,300"/>
+</map>

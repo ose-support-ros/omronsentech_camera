@@ -1,0 +1,14 @@
+<map id="stparameter.h" name="stparameter.h">
+<area shape="rect" id="node2" href="$stcamera__interface_8h.html" title="Base class to control a connected camera. " alt="" coords="328,80,472,107"/>
+<area shape="rect" id="node8" href="$stcamera__node_8h.html" title="Class implementation for stcamera_node. " alt="" coords="504,162,627,189"/>
+<area shape="rect" id="node13" href="$stparameter_8cpp.html" title="stparameter.cpp" alt="" coords="575,80,691,107"/>
+<area shape="rect" id="node3" href="$stcamera__interface__gev_8h.html" title="Class to control a connected GigEVision camera. " alt="" coords="5,155,139,196"/>
+<area shape="rect" id="node6" href="$stcamera__interface__u3v_8h.html" title="Class to control a connected USB3Vision camera. " alt="" coords="163,155,296,196"/>
+<area shape="rect" id="node12" href="$stcamera__interface_8cpp.html" title="stcamera_interface.cpp" alt="" coords="321,162,479,189"/>
+<area shape="rect" id="node4" href="$stcamera__interface__gev_8cpp.html" title="stcamera_interface\l_gev.cpp" alt="" coords="5,244,139,285"/>
+<area shape="rect" id="node5" href="$stcamera__node_8cpp.html" title="stcamera_node.cpp" alt="" coords="320,251,456,278"/>
+<area shape="rect" id="node7" href="$stcamera__interface__u3v_8cpp.html" title="stcamera_interface\l_u3v.cpp" alt="" coords="163,244,296,285"/>
+<area shape="rect" id="node9" href="$stcamera__nodelet_8h.html" title="Nodelet implementation of stcamera_node. " alt="" coords="603,251,739,278"/>
+<area shape="rect" id="node11" href="$main_8cpp.html" title="main.cpp" alt="" coords="504,251,579,278"/>
+<area shape="rect" id="node10" href="$stcamera__nodelet_8cpp.html" title="stcamera_nodelet.cpp" alt="" coords="595,333,746,360"/>
+</map>

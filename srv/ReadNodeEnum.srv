@@ -1,0 +1,5 @@
+string  module_name   # Name of the module
+string  node_name     # Name of the GenICam node
+---
+string  value_str     # Retrieved symbolic name of the current enumeration value
+int32   value_int     # Integer value of the symbolic name

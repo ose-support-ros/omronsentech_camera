@@ -1,0 +1,71 @@
+actions: []
+authors: ''
+brief: ''
+bugtracker: ''
+depends:
+- roslaunch
+- message_runtime
+- catkin
+- roscpp
+- pluginlib
+- std_msgs
+- camera_info_manager
+- sensor_msgs
+- image_transport
+- roslint
+- rospy
+- message_generation
+- nodelet
+description: omronsentech_camera package contains a basic functionality to access
+  OMRON SENTECH Camera. This package requires installation of SentechSDK.
+license: BSD
+maintainers: OSE ROS Support <support-ros@sentech.co.jp>
+msgs:
+- Chunk
+- ElementInt64
+- ElementBool
+- DeviceConnection
+- ElementFloat64
+- GenTLInfo
+- Event
+- ElementString
+- GenICamEvent
+package_type: package
+repo_url: ''
+srvs:
+- GetModuleList
+- ReadNodeEnum
+- GetSDKInfo
+- GetEnumList
+- WriteNode
+- ReadNodeBool
+- GetGigEIPi
+- GetDeviceList
+- GetTriggerList
+- ReadNode
+- GetEventAcquisitionStatusList
+- GetGigEIP
+- EnableImageAcquisition
+- ReadNodeString
+- GetEventNodeStatusList
+- GetGenICamNodeInfo
+- SetGigEIPi
+- EnableChunk
+- EnableEventAcquisition
+- EnableEventNode
+- ReadNodeInt
+- GetLastError
+- WriteNodeEnumInt
+- WriteNodeInt
+- SetGigEIP
+- WriteNodeFloat
+- SendSoftTrigger
+- GetChunkList
+- WriteNodeEnumStr
+- GetImageAcquisitionStatus
+- EnableTrigger
+- WriteNodeString
+- ExecuteNode
+- WriteNodeBool
+- ReadNodeFloat
+url: https://sentech.co.jp

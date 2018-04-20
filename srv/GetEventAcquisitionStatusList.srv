@@ -1,0 +1,5 @@
+---
+string[] module_name_list   # List of the module
+
+bool[] enabled_list         # True if the corresponding module event acquisition
+                            # is enabled. False otherwise.

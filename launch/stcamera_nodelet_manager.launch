@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="respawn" default="false" />
+  <arg name="debug" default="false" />
+  <arg name="config_file" 
+        default="$(find omronsentech_camera)/launch/stcamera_nodelet_manager.yaml" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+  <arg if="$(arg debug)" name="launch_prefix" value="gdb -ex run --args" />
+
+  <node pkg="nodelet" type="nodelet" name="stcamera_nodelet_manager" 
+    args="manager" output="screen"/>
+  <node pkg="nodelet" type="nodelet" name="stcamera_nodelet" 
+    args="load omronsentech_camera/StCameraNodelet stcamera_nodelet_manager" 
+    output="screen">
+    <rosparam command="load" file="$(arg config_file)" />
+  </node>
+</launch>
+

@@ -1,0 +1,4 @@
+string ip_address   # IP address
+string ip_mask      # IP mask
+string ip_gateway   # IP gateway
+---

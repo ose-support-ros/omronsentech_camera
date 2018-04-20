@@ -1,0 +1,4 @@
+string  module_name   # Name of the module
+string  node_name     # Name of the GenICam node
+---
+string  value         # Retrieved value

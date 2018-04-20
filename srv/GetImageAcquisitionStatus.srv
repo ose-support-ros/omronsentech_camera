@@ -1,0 +1,2 @@
+---
+bool value    # true if acquisition is on going. False if acquisition is stopped

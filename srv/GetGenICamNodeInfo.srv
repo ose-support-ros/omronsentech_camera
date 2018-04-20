@@ -1,0 +1,37 @@
+string    module_name         # Name of the module
+
+string    node_name           # Name of the GenICam node. Use "Root" to
+                              # get the top level of the node.
+---
+string 		name                # Name of the genicam node (same as node_name)
+string 		description         # Description
+string 		name_space          # GenICam namespace of the node
+string 		interface_type      # data type of the node value
+string 		access_mode         # access mode of the node
+string    is_cachable         # cachable setting for the node value
+string 		visibility          # visibility of the node
+string 		caching_mode        # caching mode of the mode
+bool 			is_streamable       # is node streamable 
+
+string[] 	enum_value_str_list # list of the enumeration symbolic name if the 
+                              # node is an enumeration node. Empty otherwise
+
+int64[] 	enum_value_int_list # list of the integer value corresponds to the
+                              # symbolic name if the node is an enumeration 
+                              # node. Empty otherwise
+
+string 		current_value       # Current value of the node in string 
+
+string 	  min_value	          # minimum value (if node value interface is 
+                              # integer or float). 0 otherwise
+
+string 		max_value           # maximum value (if node value interface is
+                              # integer or float). 0 otherwise
+
+string    increment           # increment (step)
+
+string 		unit                # unit of the node value if applicable. Empty
+                              # otherwise
+
+string[] 	child_node_list     # List of the child node if the node is a 
+                              # categorical node. Empty otherwise

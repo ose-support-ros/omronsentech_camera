@@ -1,0 +1,7 @@
+string      module_name           # Name of the module
+string      node_name             # Name of the node
+---
+string[]    enum_value_str_list   # List of retrieved enumeration symbolic value
+
+int64[]     enum_value_int_list   # List of the integer value corresponding to
+                                  # the enumeration symbolic value

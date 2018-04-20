@@ -1,0 +1,8 @@
+string  camera_id       # GigE camera ID (usually a hardware address "aa:bb:..."
+---
+string  if_ip_address   # network interface's IP address
+string  if_ip_mask      # network interface's IP mask
+string  if_ip_gateway   # network interface's IP gateway
+string  dev_ip_address  # device IP address
+string  dev_ip_mask     # device IP mask
+string  dev_ip_gateway  # device IP gateway

@@ -1,0 +1,4 @@
+string module_name    # Name of the module
+---
+omronsentech_camera/GenICamEvent[] event_node_list  # List of all available 
+                                                    # GenICam node event

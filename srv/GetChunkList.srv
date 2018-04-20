@@ -1,0 +1,5 @@
+---
+string[] chunk_name_list      # List of chunk node name
+
+bool[]  chunk_enabled_list    # true if the corresponding chunk is enabled.
+                              # False otherwise

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="respawn" default="false" />
+  <arg name="debug" default="false" />
+  <arg name="camera_namespace" default="dev_STC_MCS510U3V_00C0XXX_" />
+  <arg name="config_file" 
+        default="$(find omronsentech_camera)/launch/stcamera_node_imageproc.yaml" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+  <arg if="$(arg debug)" name="launch_prefix" value="gdb -ex run --args" />
+
+  <node pkg="omronsentech_camera" 
+    type="stcamera_node" 
+    name="stcamera_node" 
+    respawn="$(arg respawn)"
+    launch-prefix="$(arg launch_prefix)"
+    output="screen">
+    <rosparam command="load" file="$(arg config_file)" />
+  </node>
+
+  <!-- image_view-->
+  <node pkg="image_view" type="image_view" 
+    name="image_view"
+    output="screen">
+    <remap from="image" to="stcamera_node/$(arg camera_namespace)/image_raw" />
+  </node>
+
+
+</launch>
+

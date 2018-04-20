@@ -1,0 +1,3 @@
+---
+string[] module_name_list   # List of module (System, Interface, LocalDevice,
+                            # RemoteDevice, DataStream)

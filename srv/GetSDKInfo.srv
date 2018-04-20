@@ -1,0 +1,6 @@
+---
+string sdk_version                              # Version of the SentechSDK used
+                                                # by this package
+
+omronsentech_camera/GenTLInfo[] gentl_info_list # List of GenTL producer
+                                                # used by the SentechSDK

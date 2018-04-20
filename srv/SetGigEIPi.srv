@@ -1,0 +1,5 @@
+string  camera_id     # MAC hardware address of the camera
+string ip_address     # IP address 
+string ip_mask        # IP mask
+string ip_gateway     # IP gateway
+---

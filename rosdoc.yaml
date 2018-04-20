@@ -1,0 +1,5 @@
+- builder: doxygen
+  name: C++ API
+  output_dir: doc/rosdoc-lite
+  file_patterns: '*.c *.cpp *.h *.srv *.msg *.dox *.md'
+

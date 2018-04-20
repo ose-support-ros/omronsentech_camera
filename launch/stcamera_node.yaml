@@ -1,0 +1,65 @@
+# camera_to_connect: [values]
+# values (case sensitive):
+#   ["all"]                : connect to all detected camera
+#   [<MODEL(SERIAL)>, ...] : connect to only the specified camera with 
+#                          <MODEL(SERIAL)>. Model with serial number SN
+#   [<ID>, ...]          : connect to only the specified camera with ID of ID 
+#                          (U3V GUID or hardware address of GigEVision camera)
+# default value is empty (not specified).
+#
+# To connect to multiple cameras, separate the values with whitespace.
+# If no value is specified, the first found camera will be used and the 
+# camera ID is used as camera namespace to identify the camera.
+# If any value is specified, the specified name (either Model(SN) or ID) is used
+# as camera namespace to identify the camera.
+#
+# The format of the camera namespace for the topics and services correspond to
+# the connected camera is as follows:
+# dev_{camera_id} or dev_{camera_model_serial_}, where:
+# {camera_id} or {camera_model_serial_} are either camera ID or MODEL(SERIAL)
+# with non-alphanumeric characters replaced with underscore "_".
+# 
+# Example usage:
+# camera_to_connect : ["all"]
+# #namespace would be dev_{camera_id} of the connected camera.
+#
+# camera_to_connect : ["STC-MCS510U3V(00C0XXX)", "STC_SCS241POE(15DBXXX)"]
+# #namespace would be: dev_STC_MCS510U3V_00C0XXX_ and STC_SCS241POE_15DBXXX_
+#
+# camera_to_connect : ["142100030510", "00:11:1c:f6:yy:xx"]
+# #namespace would be: dev_142100030510 and dev_00_11_1c_f6_yy_xx
+#
+# camera_to_connect : ["STC-MCS510U3V(00C0XX)", "00:11:1c:f6:yy:xx"]
+# #namespace would be: dev_STC_MCS510U3V_00C0XXX_ and dev_00_11_1c_f6_yy_xx
+
+camera_to_connect : ["all"]
+
+
+# default_calibration_file: value
+# value:
+#   <full path to the calibration file for any connected camera>
+# default value is empty (not specified).
+#
+# if not specified, no calibration is performed.
+# Please refer to http://wiki.ros.org/camera_calibration for the detail process 
+# for performing calibration.
+# Tutorial for generating calibration file and rectifying image:
+#   http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration
+#   http://wiki.ros.org/camera_calibration_parsers
+#   http://wiki.ros.org/image_proc
+# Example usage:
+#default_calibration_file: file:///home/my_data/calibration/calibration.xml
+
+
+# {camera_namespace}/calibration_file: value 
+# {camera_namespace} is determined based on the camera_to_connect values. Please
+# refer to the camera_to_connect description above.
+# value:
+#   The same format as default_calibration_file. 
+# default value is empty (not specified).
+#
+# If not specified, default_calibration_file is used.
+#
+# Example usage:
+#dev_STC_MCS510U3V_00C0XXX_/calibration_file: file:///home/my_data/calibration/calibration_1.yaml
+#dev_00_11_1c_f6_yy_xx/calibration_file: file:///home/my_data/calibration/calibration_2.xml

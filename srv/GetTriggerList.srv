@@ -1,0 +1,16 @@
+---
+string[]    trigger_selector_list # List of trigger selector
+
+string[]    trigger_source_list   # List of supported trigger source (unrelated
+                                  # to the number of trigger selectors above).
+                                  # The item in this list does not correspond to
+                                  # the trigger listed in the 
+                                  # trigger_selector_list.
+
+float64[]   trigger_delayus_list  # List of trigger delay in microsecs 
+                                  # corresponding to the trigger selector
+
+bool[]      trigger_mode_list     # List of trigger mode (enabled or disabled)
+                                  # corresponding to the trigger selector
+                                  # Note that the information of the source
+                                  # for the trigger is not specified.

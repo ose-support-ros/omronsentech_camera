@@ -1,0 +1,9 @@
+string module_name    # Name of the module of the event
+                      # Changing either LocalDevice or RemoteDevice will affect
+                      # each other because in GenTL, they both refer to the 
+                      # same module "Device"
+
+bool value            # true to enable, false to disable. Caution: if either
+                      # LocalDevice/RemoteDevice event is disabled, device
+                      # disconnection would not be detected.
+---
