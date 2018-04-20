@@ -6,7 +6,7 @@
 
   <maintainer email="support-ros@sentech.co.jp">OSE ROS Support</maintainer>
   <license>BSD</license>
-  <url type="website">https://sentech.co.jp</url>
+  <url>http://www.ros.org/wiki/omronsentech_camera</url>
 
 
   <!-- Url tags are optional, but multiple are allowed, one per tag -->
