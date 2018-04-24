@@ -35,14 +35,14 @@ In case that the environment variables has not been exported, if the SentechSDK 
 The structure of the directory inside the omronsentech_camera is as follows:
 <pre>
 /
+|-./README.md
+|-./README-ja.md
 |-./CMakeLists.txt
 |-./nodelet_plugins.xml
 |-./package.xml
 |-./rosdoc.yaml
 |-./doc/
 |      |-./html/
-|      |-./mainpage-en.md
-|      |-./mainpage-ja.md
 |      |-./manifest.yaml
 |
 |-./examples/

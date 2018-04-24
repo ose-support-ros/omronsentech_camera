@@ -36,6 +36,8 @@ https://sentech.co.jp/products/USB/software.html.
 omronsentech_cameraの内部構成は以下のとおりです。
 <pre>
 /
+|-./README.md
+|-./README-ja.md
 |-./CMakeLists.txt
 |-./nodelet_plugins.xml
 |-./package.xml
