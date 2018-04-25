@@ -24,7 +24,7 @@ Below are the list of ROS packages needed to build the package:
 10. roslint
 11. rospy
 
-For installation, either clone the omronsentech_camera.git or copy the directory omronsentech_camera to your catkin workspace. Before building the package as a common ROS package using catkin_make, please ensure that the SentechSDK environment variable has been exported:
+For installation, either clone the omronsentech_camera.git or copy the content of this repository to your catkin workspace. Before building the package as a common ROS package using catkin_make, please ensure that the SentechSDK environment variable has been exported:
 
 ``$ echo $STAPI_ROOT_PATH``
 
@@ -70,7 +70,7 @@ To generate the documentation in the doc folder, execute the following command i
 
 ``$ rosdoc_lite -o doc ``
 
-Please note that doxygen and rosdoc_lite package are required to build the documentation.
+Please note that doxygen and rosdoc_lite package are required to build the documentation. 
 
 ## 3. Node stcamera_node
 For easy usage, the stcamera_node provided in the package will automatically connect to either the first found camera, predefined camera, or any camera that it can find (depend on the **camera_to_connect** parameter) and continuously acquire images from the camera.
@@ -307,8 +307,11 @@ If you are using GigEVision camera, please ensure that the camera has a valid IP
 ## 5. Customization
 The stcamera_node provides generic functionality to control the OMRON SENTECH camera. If customization is needed to accommodate a specific camera, you can extend StCameraInterface class and either create a new ROS node or modify the existing stcamera_node (StCameraNode class) to support the specific camera. If you prefer the latter, you will need to modify the initialization process of the camera interface in StCameraNode class which can be found in function initializeCamera(). Please refer to the doxygen documentation for the structure of the StCameraInterface and the StCameraNode classes.
 
-## 6. Questions/Feedbacks and Bug Reports
-If you have any questions/feedbacks or found any bugs, please contact support-ros@sentech.co.jp.
+## 6. API Documentation
+You can also find the code API and Msg/Srv API documentation at the following URL: https://wiki.ros.org/omronsentech_camera.
+
+## 7. Questions/Feedbacks and Bug Reports
+If you have any questions/feedbacks or found any bugs, please contact support-ros AT sentech.co DOT jp.
 
 [GenICam GenApi documentation]:http://www.emva.org/wp-content/uploads/GenICam_Standard_v2_0.pdf
 [GenICam GenTL documentation]:http://www.emva.org/wp-content/uploads/GenICam_GenTL_1_5.pdf

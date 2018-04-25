@@ -25,7 +25,7 @@ https://sentech.co.jp/products/USB/software.html.
 10. roslint
 11. rospy
 
-インストール手順として、catkinのワークスペースにomronsentech_camera.gitをクローンするかomronsentech_cameraのフォルダをコピーして下さい。 通常のROSパッケージとしてパッケージをビルドする前にSentechSDKの環境変数の設定を確認して下さい:
+インストール手順として、catkinのワークスペースにomronsentech_camera.gitをクローンするかこのレポジトリに全ファイルをコピーして下さい。 通常のROSパッケージとしてパッケージをビルドする前にSentechSDKの環境変数の設定を確認して下さい:
 
 ``$ echo $STAPI_ROOT_PATH``
 
@@ -301,8 +301,11 @@ GigEVisionカメラを利用する場合は、カメラに有効なIPアドレ�
 stcamera_nodeは、OMRON SENTECHカメラを制御するために、一般的な機能を提供します。特定のカメラに対応するためのカスタマイズが必要な場合は、StCameraInterfaceクラスを継承し、別途のROSノードを作成するか既存のstcamera_node（StCameraNodeクラス）を編集する必要があります。stcamera_node（StCameraNodeクラス）を編集する場合、StCameraNodeクラスのinitializeCamera()関数にあるカメラインターフェイス初期化プロセスを編集する必要があります。
 StCameraInterfaceやStCameraNodeクラスの構造については、doxygenドキュメントを参照下さい。
 
-## 6. 質問・フィードバックや不具合の報告
-質問・フィードバックやバグが見つかった場合は、support-ros@sentech.co.jpにお問い合わせ下さい。
+## 6. API ドキュメント
+コードのAPIやMsg/Srv APIのドキュメントは下記のURLでアクセスできます：https://wiki.ros.org/omronsentech_camera.
+
+## 7. 質問・フィードバックや不具合の報告
+質問・フィードバックやバグが見つかった場合は、support-ros AT sentech.co DOT jpにお問い合わせ下さい。
 
 [GenICam GenApiドキュメント（英語）]:http://www.emva.org/wp-content/uploads/GenICam_Standard_v2_0.pdf
 [GenICam GenTLドキュメント（英語）]:http://www.emva.org/wp-content/uploads/GenICam_GenTL_1_5.pdf
