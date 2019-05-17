@@ -111,13 +111,13 @@ The namespace *{dev\_CAMERA-NS}* can also be retrieved from the value of *device
 ### 3.3. Published Topics
 The topics published by the stcamera_node are as follows:
 
-No. | Topics | Description
-:---: | ----------------------- | ----------------------------------------------
-1. | **device_connection** | Published when connection or disconnection happened.
-2. | *{dev\_CAMERA-NS}*/**camera_info** | Based on the ROS image_transport.
-3. | *{dev\_CAMERA-NS}*/**chunk** | Published when chunk data is acquired.
-4. | *{dev\_CAMERA-NS}*/**event** | Published when camera event is registered and event data corresponds to the registered event is acquired.
-5. | *{dev\_CAMERA-NS}*/**image_raw\*** | Published when image data is acquired, based on the ROS image_transport.
+No.   | Topics                             | Description
+----- | ---------------------------------- | ----------------------------------------------
+1.    | **device_connection**              | Published when connection or disconnection happened.
+2.    | *{dev\_CAMERA-NS}*/**camera_info** | Based on the ROS image_transport.
+3.    | *{dev\_CAMERA-NS}*/**chunk**       | Published when chunk data is acquired.
+4.    | *{dev\_CAMERA-NS}*/**event**       | Published when camera event is registered and event data corresponds to the registered event is acquired.
+5.    | *{dev\_CAMERA-NS}*/**image_raw\*** | Published when image data is acquired, based on the ROS image_transport.
 
 
 ### 3.4. Services
