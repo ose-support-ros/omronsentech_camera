@@ -200,43 +200,63 @@ namespace stcamera
     }
 
     // check if chunk is enabled. 
-    GenApi::CNodeMapPtr mp = tl_dev_->GetRemoteIStPort()->GetINodeMap();
-    GenApi::INode *node_sel = mp->GetNode( GenICam::gcstring("ChunkSelector"));
-    GenApi::INode *node_enable = mp->GetNode(
-        GenICam::gcstring("ChunkEnable"));
-    if (node_sel && node_enable)
+    try
     {
-      GenApi::CEnumerationPtr chunk_selector(node_sel);
-      GenApi::NodeList_t nodelist;
-      chunk_selector->GetEntries(nodelist);
-      for (GenApi::NodeList_t::iterator it = nodelist.begin();
-          it != nodelist.end(); it++)
+      GenApi::CNodeMapPtr mp = tl_dev_->GetRemoteIStPort()->GetINodeMap();
+      GenApi::INode *node_sel = mp->GetNode( GenICam::gcstring("ChunkSelector"));
+      GenApi::INode *node_enable = mp->GetNode(GenICam::gcstring("ChunkEnable"));
+      GenApi::INode *node_chunk_active = mp->GetNode(
+          GenICam::gcstring("ChunkModeActive"));
+      if (node_sel && node_enable && node_chunk_active)
       {
-        if (GenApi::IsAvailable(*it))
+        GenApi::CBooleanPtr chunk_active(node_chunk_active);
+        GenApi::CEnumerationPtr chunk_selector(node_sel);
+        GenApi::NodeList_t nodelist;
+        bool revert_chunk_mode = (false == chunk_active->GetValue());
+        if (revert_chunk_mode) 
         {
-          GenApi::CEnumEntryPtr enum_entry(*it);
-          std::string chunk_name = enum_entry->GetSymbolic().c_str();
-          chunk_selector->SetIntValue(enum_entry->GetValue());
-          GenApi::CBooleanPtr chunk_enable(node_enable);
-          if (GenApi::IsReadable(chunk_enable) && 
-              chunk_enable->GetValue() == true)
+          chunk_active->SetValue(true);
+        }
+        chunk_selector->GetEntries(nodelist);
+        for (GenApi::NodeList_t::iterator it = nodelist.begin();
+            it != nodelist.end(); it++)
+        {
+          if (GenApi::IsAvailable(*it))
           {
-            GenICam::gcstring chunk_value_name("Chunk");
-            chunk_value_name.append(chunk_name.c_str());
-            GenApi::CNodePtr p_chunk_value(mp->GetNode(
-                  GenICam::gcstring(chunk_value_name)));
-            if (!p_chunk_value) continue;
-            MapChunk::iterator itm = map_chunk_.find(p_chunk_value
-                ->GetName().c_str());
-            if (itm == map_chunk_.end() || itm->second == nullptr)
+            GenApi::CEnumEntryPtr enum_entry(*it);
+            std::string chunk_name = enum_entry->GetSymbolic().c_str();
+            chunk_selector->SetIntValue(enum_entry->GetValue());
+            GenApi::CBooleanPtr chunk_enable(node_enable);
+            if (GenApi::IsReadable(chunk_enable) && 
+                chunk_enable->GetValue() == true)
             {
-              map_chunk_[p_chunk_value->GetName().c_str()] = p_chunk_value;
+              GenICam::gcstring chunk_value_name("Chunk");
+              chunk_value_name.append(chunk_name.c_str());
+              GenApi::CNodePtr p_chunk_value(mp->GetNode(
+                    GenICam::gcstring(chunk_value_name)));
+              if (!p_chunk_value) continue;
+              MapChunk::iterator itm = map_chunk_.find(p_chunk_value
+                  ->GetName().c_str());
+              if (itm == map_chunk_.end() || itm->second == nullptr)
+              {
+                map_chunk_[p_chunk_value->GetName().c_str()] = p_chunk_value;
+              }
             }
           }
         }
+        if (revert_chunk_mode) 
+        {
+          chunk_active->SetValue(false);
+        }
       }
     }
-
+    catch(GenICam::GenericException &x)
+    {
+      ROS_ERROR("%s %s %d: \n\t%s GenICam error when checking chunk: %s",
+          __FILE__,__func__,__LINE__, 
+          camera_namespace_.c_str(), x.GetDescription());
+    }
+    
     initializeCameraInfo();
     
     // start acquisition
@@ -1046,6 +1066,12 @@ namespace stcamera
         RETURN_ERR(CHUNK_NOT_SUPPORTED_ERROR, CHUNK_NOT_SUPPORTED_ERROR_STR);
       }
 
+      bool revert_chunk_mode = (false == chunk_active->GetValue());
+      if (revert_chunk_mode) 
+      {
+        chunk_active->SetValue(true);
+      }
+
       if (req.chunk_name.empty()) // All chunks
       {
         GenApi::NodeList_t chunk_list;
@@ -1078,49 +1104,78 @@ namespace stcamera
         if (!req.value) 
         {
           map_chunk_.clear();
+          chunk_active->SetValue(false);
         }
-        chunk_active->SetValue(req.value);
       }
       else
       {
+        bool is_writable = true;
+        bool all_chunk_disabled;
+        GenApi::NodeList_t nodelist;
         GenApi::CEnumEntryPtr chunk_list_entry(chunk_selector
             ->GetEntryByName(GenICam::gcstring(req.chunk_name.c_str())));
-        if (!chunk_list_entry.IsValid() || 
-            !GenApi::IsReadable(chunk_list_entry))
+        if (chunk_list_entry.IsValid() &&
+            GenApi::IsReadable(chunk_list_entry))
         {
+          chunk_selector->SetIntValue(chunk_list_entry->GetValue());
+          if (!GenApi::IsWritable(chunk_enable))
+          {
+            is_writable = false;
+          }
+        }
+
+        if (!is_writable)
+        {
+          if (revert_chunk_mode) 
+          {
+            chunk_active->SetValue(false);
+          }
           RETURN_ERR(CHUNK_NAME_ERROR, CHUNK_NAME_ERROR_STR);
         }
-        chunk_selector->SetIntValue(chunk_list_entry->GetValue());
-        if (GenApi::IsWritable(chunk_enable))
-        {
-          chunk_enable->SetValue(req.value);
 
-          GenICam::gcstring chunk_value_name("Chunk");
-          chunk_value_name.append(req.chunk_name.c_str());
-          GenApi::CNodePtr chunk_value_node(mp->GetNode(chunk_value_name));
-          if (chunk_value_node)
+        chunk_enable->SetValue(req.value);
+
+        GenICam::gcstring chunk_value_name("Chunk");
+        chunk_value_name.append(req.chunk_name.c_str());
+        GenApi::CNodePtr chunk_value_node(mp->GetNode(chunk_value_name));
+        if (chunk_value_node)
+        {
+          MapChunk::iterator itm = map_chunk_.find(chunk_value_node
+              ->GetName().c_str());
+          if (req.value)
           {
-            MapChunk::iterator itm = map_chunk_.find(chunk_value_node
-                ->GetName().c_str());
-            if (req.value)
+            if (itm == map_chunk_.end() || itm->second == nullptr)
             {
-              if (itm == map_chunk_.end() || itm->second == nullptr)
-              {
-                map_chunk_[chunk_value_node->GetName().c_str()] = 
-                    chunk_value_node;
-              }
-              if (chunk_active->GetValue() == false)
-              {
-                chunk_active->SetValue(req.value);
-              }
+              map_chunk_[chunk_value_node->GetName().c_str()] = 
+                  chunk_value_node;
             }
           }
         }
-        else
+        
+        // Disable chunk active if only Image is enabled.
+        all_chunk_disabled = true;
+        chunk_selector->GetEntries(nodelist);
+        for (GenApi::NodeList_t::iterator it = nodelist.begin();
+            it != nodelist.end(); it++)
         {
-          RETURN_ERR(CHUNK_NAME_ERROR, CHUNK_NAME_ERROR_STR);
+          if (GenApi::IsAvailable(*it))
+          {
+            GenApi::CEnumEntryPtr enum_entry(*it);
+            if (enum_entry->GetValue() == 0) continue; // skip image.
+            chunk_selector->SetIntValue(enum_entry->GetValue());
+            if (chunk_enable->GetValue() == true)     
+            {
+              all_chunk_disabled = false;
+              break;
+            }
+          }
+        }
+        if (all_chunk_disabled)
+        {
+          chunk_active->SetValue(false);
         }
       }
+
       return true;
     }
     CATCH_COMMON_ERR();
@@ -1535,6 +1590,14 @@ namespace stcamera
       {
         RETURN_ERR(CHUNK_NOT_SUPPORTED_ERROR,CHUNK_NOT_SUPPORTED_ERROR_STR);
       }
+
+      GenApi::CBooleanPtr chunk_active = mp->GetNode(
+          GenICam::gcstring("ChunkModeActive"));
+      bool revert_chunk_mode = (false == chunk_active->GetValue());
+      if (revert_chunk_mode) 
+      {
+        chunk_active->SetValue(true);
+      }
       chunk_selector->GetEntries(nodelist);
       for (GenApi::NodeList_t::iterator it = nodelist.begin();
           it != nodelist.end(); it++)
@@ -1554,6 +1617,11 @@ namespace stcamera
           }
         }
       }
+      if (revert_chunk_mode) 
+      {
+        chunk_active->SetValue(false);
+      }
+
       return true;
     }
     CATCH_COMMON_ERR();

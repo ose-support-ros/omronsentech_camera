@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>omronsentech_camera</name>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <description>omronsentech_camera package contains a basic functionality to access OMRON SENTECH Camera. This package requires installation of SentechSDK.</description>
 
   <maintainer email="support-ros@sentech.co.jp">OSE ROS Support</maintainer>
