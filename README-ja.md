@@ -7,7 +7,7 @@ omronsentech_cameraパッケージはオムロン センテック株式会社が
 *GenICam GenApi*ノードとROSにあるノードとは全く別の物であることを注意下さい。 各GenICam GenApiノードは、汎用インタフェースを介してアクセス可能なカメラデバイスの機能またはレジスタに対応しています。GenICam GenApiの詳細は[GenICam GenApiドキュメント（英語）]を参照下さい。
 
 ## 2. インストール
-本パッケージはUbuntu 16.04 64ビット上のROS-Kineticで動作確認済みです。
+本パッケージはUbuntu 16.04 64ビット上のROS-KineticとUbuntu 18.04 64ビット上のROS-Melodicで動作確認済みです。
 SentechSDKのカメラ制御機能(Transport Layer) モジュールを利用するため、本パッケージをインストールする際は事前にSentechSDKをインストールする必要があります。下記のURLでSentechSDK (USB3VisionとGigEVision)がダウンロードできます：
 https://sentech.co.jp/products/USB/software.html.
 
@@ -115,11 +115,11 @@ stcamera_nodeが発行するトピックは下記の通りです：
 
 No.   |　トピック                          | 説明
 ----- | ---------------------------------- | ----------------------------------------------
-1.    | **device_connection**              | 接続または切断したときに発行されます。
-2.    | *{dev\_CAMERA-NS}*/**camera_info** | ROSのimage_transport基準です。
-3.    | *{dev\_CAMERA-NS}*/**chunk**       | チャンクデータを取得したときに発行されます。
-4.    | *{dev\_CAMERA-NS}*/**event**       | カメライベントを登録し、登録されたイベントが発生したときに発行されます。
-5.    | *{dev\_CAMERA-NS}*/**image_raw\*** | 画像データを取得したときに発行されます（ROSのimage_transport基準）。
+1     | **device_connection**              | 接続または切断したときに発行されます。
+2     | *{dev\_CAMERA-NS}*/**camera_info** | ROSのimage_transport基準です。
+3     | *{dev\_CAMERA-NS}*/**chunk**       | チャンクデータを取得したときに発行されます。
+4     | *{dev\_CAMERA-NS}*/**event**       | カメライベントを登録し、登録されたイベントが発生したときに発行されます。
+5     | *{dev\_CAMERA-NS}*/**image_raw\*** | 画像データを取得したときに発行されます（ROSのimage_transport基準）。
 
 ### 3.4. サービス
 stcamera_nodeが提供するサービスは下記の通りです：
