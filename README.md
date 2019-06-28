@@ -6,7 +6,7 @@ Any cameras supported by Linux-based SentechSDK are also supported by this packa
 This package provides generic access to the camera's *GenICam GenApi nodes* and functions through SentechSDK's transport layer module. Note that *GenICam GenApi node* is a different thing from the term *node* in ROS. Each GenICam GenApi node corresponds to the camera device's feature or register that can be accessed through a generic interface. The detail of the GenICam GenApi can be found in the [GenICam GenApi documentation].
 
 ## 2. Installation
-This package has been tested on ROS-Kinetic running under Ubuntu 16.04 64bit.
+This package has been tested on ROS-Kinetic (Ubuntu 16.04 64bit) and ROS-Melodic (Ubuntu 18.04 64bit).
 Since this package basically wraps SentechSDK's transport layer module, SentechSDK must be installed prior to the installation of this package. The SentechSDK (USB3Vision and GigEVision) can be downloaded from the following URL:
 https://sentech.co.jp/products/USB/software.html.
 
@@ -113,11 +113,11 @@ The topics published by the stcamera_node are as follows:
 
 No.   | Topics                             | Description
 ----- | ---------------------------------- | ----------------------------------------------
-1.    | **device_connection**              | Published when connection or disconnection happened.
-2.    | *{dev\_CAMERA-NS}*/**camera_info** | Based on the ROS image_transport.
-3.    | *{dev\_CAMERA-NS}*/**chunk**       | Published when chunk data is acquired.
-4.    | *{dev\_CAMERA-NS}*/**event**       | Published when camera event is registered and event data corresponds to the registered event is acquired.
-5.    | *{dev\_CAMERA-NS}*/**image_raw\*** | Published when image data is acquired, based on the ROS image_transport.
+1     | **device_connection**              | Published when connection or disconnection happened.
+2     | *{dev\_CAMERA-NS}*/**camera_info** | Based on the ROS image_transport.
+3     | *{dev\_CAMERA-NS}*/**chunk**       | Published when chunk data is acquired.
+4     | *{dev\_CAMERA-NS}*/**event**       | Published when camera event is registered and event data corresponds to the registered event is acquired.
+5     | *{dev\_CAMERA-NS}*/**image_raw\*** | Published when image data is acquired, based on the ROS image_transport.
 
 
 ### 3.4. Services
