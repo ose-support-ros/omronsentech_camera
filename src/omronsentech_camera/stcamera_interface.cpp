@@ -553,8 +553,8 @@ namespace stcamera
             case StApi::StPFNC_Mono16: 
               encoding = sensor_msgs::image_encodings::MONO16; 
               break;
-            case StApi::StPFNC_BGR8:
-              encoding = sensor_msgs::image_encodings::BGR8;
+            case StApi::StPFNC_RGB8:
+              encoding = sensor_msgs::image_encodings::RGB8;
               break;
           }
           if (encoding.empty())
