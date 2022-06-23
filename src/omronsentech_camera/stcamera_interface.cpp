@@ -553,6 +553,9 @@ namespace stcamera
             case StApi::StPFNC_Mono16: 
               encoding = sensor_msgs::image_encodings::MONO16; 
               break;
+            case StApi::StPFNC_RGB8:
+              encoding = sensor_msgs::image_encodings::RGB8;
+              break;
           }
           if (encoding.empty())
           {
@@ -568,7 +571,7 @@ namespace stcamera
 
           StApi::IStPixelFormatInfo *const p_pixelformat_info = 
               StApi::GetIStPixelFormatInfo(ePFNC);
-          if (p_pixelformat_info->IsMono() || p_pixelformat_info->IsBayer())
+          if (p_pixelformat_info->IsMono() || p_pixelformat_info->IsBayer() || p_pixelformat_info->IsColor())
           {
             //image data
             sensor_msgs::ImagePtr image(new sensor_msgs::Image);
