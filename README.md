@@ -310,8 +310,9 @@ The stcamera_node provides generic functionality to control the OMRON SENTECH ca
 ## 6. API Documentation
 You can also find the code API and Msg/Srv API documentation at the following URL: https://wiki.ros.org/omronsentech_camera.
 
-## 7. Questions/Feedbacks and Bug Reports
-If you have any questions/feedbacks or found any bugs, please contact support-ros AT sentech.co DOT jp.
+## 7. About technical supports
+This project is offered with no technical support by OMRON SENTECH CO., LTD.
+
 
 [GenICam GenApi documentation]:http://www.emva.org/wp-content/uploads/GenICam_Standard_v2_0.pdf
 [GenICam GenTL documentation]:http://www.emva.org/wp-content/uploads/GenICam_GenTL_1_5.pdf
