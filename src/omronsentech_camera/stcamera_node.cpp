@@ -275,6 +275,7 @@ namespace stcamera
 
     std::string device_id = std::string(p_devinfo->GetID());
     std::string device_displayname = std::string(p_devinfo->GetDisplayName());
+    std::string device_userdefinedname = std::string(p_devinfo->GetUserDefinedName() );
     std::string key = "";
     if (param_.connectAllCamera() || param_.connectFirstCameraOnly())
     {
@@ -293,6 +294,12 @@ namespace stcamera
           break;
         }
         key = param_.getNamespace(device_displayname);
+        if (it->first.compare(key) == 0) 
+        {
+          found = true;
+          break;
+        }
+        key = param_.getNamespace(device_userdefinedname);
         if (it->first.compare(key) == 0) 
         {
           found = true;
