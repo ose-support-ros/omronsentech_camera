@@ -577,6 +577,7 @@ namespace stcamera
             sensor_msgs::ImagePtr image(new sensor_msgs::Image);
             image->header.stamp = ros::Time((double)p_streambuffer
                 ->GetIStStreamBufferInfo()->GetTimestamp()/1000000.0);
+            image->header.frame_id = camera_namespace_;
             image->width = p_stimage->GetImageWidth();
             image->height = p_stimage->GetImageHeight();
             image->step = p_stimage->GetImageLinePitch();
@@ -591,7 +592,6 @@ namespace stcamera
             sensor_msgs::CameraInfoPtr ci(new sensor_msgs::CameraInfo(
                 cinfo_.getCameraInfo()));
             ci->header.stamp = image->header.stamp;
-
             if (it_campub_.getNumSubscribers() > 0)
             {
               it_campub_.publish(image, ci);
