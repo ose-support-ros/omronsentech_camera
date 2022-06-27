@@ -304,8 +304,8 @@ StCameraInterfaceやStCameraNodeクラスの構造については、doxygenド�
 ## 6. API ドキュメント
 コードのAPIやMsg/Srv APIのドキュメントは下記のURLでアクセスできます：https://wiki.ros.org/omronsentech_camera.
 
-## 7. 質問・フィードバックや不具合の報告
-質問・フィードバックやバグが見つかった場合は、support-ros AT sentech.co DOT jpにお問い合わせ下さい。
+## 7. サポートについて
+オムロンセンテック株式会社としては、このプロジェクトに対して公式な技術サポートは行っておりません。
 
 [GenICam GenApiドキュメント（英語）]:http://www.emva.org/wp-content/uploads/GenICam_Standard_v2_0.pdf
 [GenICam GenTLドキュメント（英語）]:http://www.emva.org/wp-content/uploads/GenICam_GenTL_1_5.pdf
