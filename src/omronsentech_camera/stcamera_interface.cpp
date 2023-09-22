@@ -569,7 +569,7 @@ namespace stcamera
             return;
           }
 
-          StApi::IStPixelFormatInfo *const p_pixelformat_info = 
+          const StApi::IStPixelFormatInfo *const p_pixelformat_info = 
               StApi::GetIStPixelFormatInfo(ePFNC);
           if (p_pixelformat_info->IsMono() || p_pixelformat_info->IsBayer() || p_pixelformat_info->IsColor())
           {
